@@ -10,11 +10,13 @@ inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
      - `http://10.0.0.4:19999`
    - FileBrowser
      - `http://10.0.0.4:8999`
+     - username: admin
+     - password: admin
 
 - Torrenting tools
   - Deluge
     - `http://10.0.0.4:8112`
-    password: deluge
+    - password: deluge
   - NZBGet
     - `http://10.0.0.4:6387`
     - username: nzbget
