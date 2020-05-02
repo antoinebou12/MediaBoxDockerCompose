@@ -14,7 +14,7 @@ services:
         volumes:
             - '${ROOT}/downloads:/downloads'
             - '${ROOT}/config/deluge:/config'
-            
+
     jackett:
         container_name: jackett
         image: 'linuxserver/jackett:latest'
@@ -29,7 +29,7 @@ services:
             - '/etc/localtime:/etc/localtime:ro'
             - '${ROOT}/downloads/torrent-blackhole:/downloads'
             - '${ROOT}/config/jackett:/config'
-            
+
     nzbget:
         container_name: nzbget
         image: 'linuxserver/nzbget:latest'
@@ -43,7 +43,7 @@ services:
         volumes:
             - '${ROOT}/downloads:/downloads'
             - '${ROOT}/config:/config'
-            
+
     sonarr:
         container_name: sonarr
         image: 'linuxserver/sonarr:latest'
@@ -59,7 +59,7 @@ services:
             - '${ROOT}/config/sonarr:/config'
             - '${ROOT}/complete/tv:/downloads/tv'
             - '${ROOT}/downloads:/downloads'
-            
+
     radarr:
         container_name: radarr
         image: 'linuxserver/radarr:latest'
@@ -75,7 +75,7 @@ services:
             - '${ROOT}/config/radarr:/config'
             - '${ROOT}/complete/movies:/movies'
             - '${ROOT}/downloads:/downloads'
-            
+
     lidarr:
         image: linuxserver/lidarr
         container_name: lidarr
@@ -88,11 +88,11 @@ services:
             - '/etc/localtime:/etc/localtime:ro'
             - '${ROOT}/config/lidarr:/config'
             - '${ROOT}/complete/music:/music'
-            - '${ROOT}/downloads:/downloads'
+            - '${ROOT}/downloads/complete:/downloads'
         ports:
             - '8686:8686'
         restart: unless-stopped
-        
+
     bazarr:
         container_name: bazarr
         image: linuxserver/bazarr
@@ -109,12 +109,14 @@ services:
             - '${ROOT}/complete/tv:/tv'
         ports:
             - '6767:6767'
-            
+
     plex-server:
         container_name: plex-server
         image: 'plexinc/pms-docker:latest'
         restart: unless-stopped
         environment:
+            - 'PLEX_UID=${PUID}'
+            - 'PLEX_GID=${PGID}'
             - 'TZ=${TZ}'
             - 'PLEX_CLAIM=${PLEX_CLAIM}'
         ports:
@@ -129,10 +131,9 @@ services:
             - '32414:32414'
         volumes:
             - '${ROOT}/config/plex/db:/config'
-            - '${ROOT}/config/plex/logs:/config/Library/Application Support/Plex Media/Server/Logs'
             - '${ROOT}/config/plex/transcode:/transcode'
             - '${ROOT}/complete:/data'
-            
+
     tautulli:
         image: linuxserver/tautulli
         container_name: tautulli
@@ -142,11 +143,10 @@ services:
             - 'TZ=${TZ}'
         volumes:
             - '${ROOT}/config/tautulli:/config'
-            - '${ROOT}/config/plex/logs:/logs'
         ports:
             - '8063:8181'
         restart: unless-stopped
-        
+
     jellyfin:
         image: linuxserver/jellyfin
         container_name: jellyfin
@@ -164,7 +164,23 @@ services:
             - '8096:8096'
             - '8920:8920'
         restart: unless-stopped
-        
+
+    couchpotato:
+        image: linuxserver/couchpotato
+        container_name: couchpotato
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+            - UMASK_SET=022
+        volumes:
+            - '${ROOT}/config/couchpotato/config:/config'
+            - '${ROOT}/downloads:/downloads'
+            - '${ROOT}/complete/movies:/movies'
+        ports:
+            - '5050:5050'
+        restart: unless-stopped
+
     ombi:
         image: linuxserver/ombi
         container_name: ombi
@@ -177,7 +193,7 @@ services:
         ports:
             - '3579:3579'
         restart: unless-stopped
-        
+
     netdata:
         image: netdata/netdata
         container_name: netdata
@@ -197,7 +213,7 @@ services:
             - '/proc:/host/proc:ro'
             - '/sys:/host/sys:ro'
         restart: unless-stopped
-        
+
     dashmachine:
       image: "rmountjoy/dashmachine:latest"
       container_name: dashmachine
@@ -210,3 +226,10 @@ services:
       volumes:
         - "${ROOT}/config/dashmachine:/dashmachine/dashmachine/user_data"
       restart: unless-stopped
+
+    filebrowser:
+      image: filebrowser/filebrowser
+      volumes:
+        - '${ROOT}:/srv-v'
+      ports:
+        - '8999:80'
