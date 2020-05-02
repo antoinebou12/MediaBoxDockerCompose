@@ -12,6 +12,7 @@ inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
      - `http://<your_ip>:8999`
      - username: admin
      - password: admin
+     - before docker-compose up create file in the ${ROOT}/config/filebrowser/database.db
 
 - Torrenting tools
   - Deluge
@@ -51,6 +52,3 @@ inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
   - Dashmachine
     - `http://<your_ip>:5000`
     - use the dashmachine.config.ini in [Setting]
-  - Filebrowser
-    - `http://<your_ip>:8999`
-    - before docker-compose up create file in the ${ROOT}/config/filebrowser/database.db
