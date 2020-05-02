@@ -218,8 +218,8 @@ services:
       image: "rmountjoy/dashmachine:latest"
       container_name: dashmachine
       environment:
-        - PUID='${UDOCKER_USERID}'
-        - PGID='${UDOCKER_GROUPID}'
+        - PUID='${PUID}'
+        - PGID='${PGID}'
         - TZ='${TZ}'
       ports:
         - "5000:5000"
@@ -229,7 +229,13 @@ services:
 
     filebrowser:
       image: filebrowser/filebrowser
+      container_name: filebrowser
+      environment:
+        - PUID='${PUID}'
+        - PGID='${PGID}'
+        - TZ='${TZ}'
       volumes:
-        - '${ROOT}:/srv-v'
+        - '${ROOT}/config/filebrowser/database.db:/database.db'
+        - '${ROOT}:/srv'
       ports:
         - '8999:80'
