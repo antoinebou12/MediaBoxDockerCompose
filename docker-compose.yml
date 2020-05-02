@@ -1,0 +1,212 @@
+version: '3.7'
+services:
+    deluge:
+        container_name: deluge
+        image: 'linuxserver/deluge:latest'
+        restart: unless-stopped
+        ports:
+            - '8112:8112'
+            - '58846:58846'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/downloads:/downloads'
+            - '${ROOT}/config/deluge:/config'
+            
+    jackett:
+        container_name: jackett
+        image: 'linuxserver/jackett:latest'
+        restart: unless-stopped
+        ports:
+            - '9117:9117'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '/etc/localtime:/etc/localtime:ro'
+            - '${ROOT}/downloads/torrent-blackhole:/downloads'
+            - '${ROOT}/config/jackett:/config'
+            
+    nzbget:
+        container_name: nzbget
+        image: 'linuxserver/nzbget:latest'
+        restart: unless-stopped
+        ports:
+            - '6789:6789'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/downloads:/downloads'
+            - '${ROOT}/config:/config'
+            
+    sonarr:
+        container_name: sonarr
+        image: 'linuxserver/sonarr:latest'
+        restart: unless-stopped
+        ports:
+            - '8989:8989'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '/etc/localtime:/etc/localtime:ro'
+            - '${ROOT}/config/sonarr:/config'
+            - '${ROOT}/complete/tv:/downloads/tv'
+            - '${ROOT}/downloads:/downloads'
+            
+    radarr:
+        container_name: radarr
+        image: 'linuxserver/radarr:latest'
+        restart: unless-stopped
+        ports:
+            - '7878:7878'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '/etc/localtime:/etc/localtime:ro'
+            - '${ROOT}/config/radarr:/config'
+            - '${ROOT}/complete/movies:/movies'
+            - '${ROOT}/downloads:/downloads'
+            
+    lidarr:
+        image: linuxserver/lidarr
+        container_name: lidarr
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+            - UMASK_SET=022
+        volumes:
+            - '/etc/localtime:/etc/localtime:ro'
+            - '${ROOT}/config/lidarr:/config'
+            - '${ROOT}/complete/music:/music'
+            - '${ROOT}/downloads:/downloads'
+        ports:
+            - '8686:8686'
+        restart: unless-stopped
+        
+    bazarr:
+        container_name: bazarr
+        image: linuxserver/bazarr
+        restart: unless-stopped
+        network_mode: host
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+            - UMASK_SET=022
+        volumes:
+            - '${ROOT}/config/bazarr:/config'
+            - '${ROOT}/complete/movies:/movies'
+            - '${ROOT}/complete/tv:/tv'
+        ports:
+            - '6767:6767'
+            
+    plex-server:
+        container_name: plex-server
+        image: 'plexinc/pms-docker:latest'
+        restart: unless-stopped
+        environment:
+            - 'TZ=${TZ}'
+            - 'PLEX_CLAIM=${PLEX_CLAIM}'
+        ports:
+            - '32400:32400'
+            - '3005:3005'
+            - '8324:8324'
+            - '32469:32469'
+            - '1900:1900'
+            - '32410:32410'
+            - '32412:32412'
+            - '32413:32413'
+            - '32414:32414'
+        volumes:
+            - '${ROOT}/config/plex/db:/config'
+            - '${ROOT}/config/plex/logs:/config/Library/Application Support/Plex Media/Server/Logs'
+            - '${ROOT}/config/plex/transcode:/transcode'
+            - '${ROOT}/complete:/data'
+            
+    tautulli:
+        image: linuxserver/tautulli
+        container_name: tautulli
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/tautulli:/config'
+            - '${ROOT}/config/plex/logs:/logs'
+        ports:
+            - '8063:8181'
+        restart: unless-stopped
+        
+    jellyfin:
+        image: linuxserver/jellyfin
+        container_name: jellyfin
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/jellyfin:/config'
+            - '${ROOT}/complete/tv:/data/tvshows'
+            - '${ROOT}/complete/movies:/data/movies'
+            - '${ROOT}/complete/music:/data/music'
+            - '/opt/vc/lib:/opt/vc/lib'
+        ports:
+            - '8096:8096'
+            - '8920:8920'
+        restart: unless-stopped
+        
+    ombi:
+        image: linuxserver/ombi
+        container_name: ombi
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/ombi/config:/config'
+        ports:
+            - '3579:3579'
+        restart: unless-stopped
+        
+    netdata:
+        image: netdata/netdata
+        container_name: netdata
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        ports:
+            - '19999:19999'
+        cap_add:
+            - SYS_PTRACE
+        security_opt:
+            - 'apparmor:unconfined'
+        volumes:
+            - '/etc/passwd:/host/etc/passwd:ro'
+            - '/etc/group:/host/etc/group:ro'
+            - '/proc:/host/proc:ro'
+            - '/sys:/host/sys:ro'
+        restart: unless-stopped
+        
+    dashmachine:
+      image: "rmountjoy/dashmachine:latest"
+      container_name: dashmachine
+      environment:
+        - PUID='${UDOCKER_USERID}'
+        - PGID='${UDOCKER_GROUPID}'
+        - TZ='${TZ}'
+      ports:
+        - "5000:5000"
+      volumes:
+        - "${ROOT}/config/dashmachine:/dashmachine/dashmachine/user_data"
+      restart: unless-stopped
