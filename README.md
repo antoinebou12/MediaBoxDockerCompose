@@ -7,45 +7,47 @@ inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
 
 - Administration tools 
    - Netdata
-     - `http://10.0.0.4:19999`
+     - `http://<your_ip>:19999`
    - FileBrowser
-     - `http://10.0.0.4:8999`
+     - `http://<your_ip>:8999`
      - username: admin
      - password: admin
 
 - Torrenting tools
   - Deluge
-    - `http://10.0.0.4:8112`
+    - `http://<your_ip>:8112`
     - password: deluge
+    - Extra: use the auth
   - NZBGet
-    - `http://10.0.0.4:6387`
+    - `http://<your_ip>:6387`
     - username: nzbget
     - password: tegbzn6789
   - Jackett
-    - `http://10.0.0.4:9117`
+    - `http://<your_ip>:9117`
 
 - Automatic Downloader
   - Sonarr: Tv Shows 
-    - `http://10.0.0.4:8989`
+    - `http://<your_ip>:8989`
   - Radarr: Movies
-    - `http://10.0.0.4:7878`
+    - `http://<your_ip>:7878`
   - Lidarr: Music
-    - `http://10.0.0.4:8686`
+    - `http://<your_ip>:8686`
   - Bazarr: subtitle
-    - `http://10.0.0.4:6767`
+    - `http://<your_ip>:6767`
 
 - Plex And Media 
   - Plex
-    - `http://10.0.0.4:32400`
+    - `http://<your_ip>:32400`
   - Ombi
-    - `http://10.0.0.4:3579`
+    - `http://<your_ip>:3579`
   - Tautulli
-    - `http://10.0.0.4:8063`
+    - `http://<your_ip>:8063`
   - Jellyfin
-    - `http://10.0.0.4:8096`
+    - `http://<your_ip>:8096`
   - Couchpotato
-    - `http://10.0.0.4:5050`
+    - `http://<your_ip>:5050`
 
 - Web portal
   - Dashmachine
-    - `http://10.0.0.4:5000`
+    - `http://<your_ip>:5000`
+    - use the dashmachine.config.ini in [Setting]
