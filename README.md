@@ -12,14 +12,14 @@ inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
      - `http://10.0.0.4:8999`
 
 - Torrenting tools
-  Deluge
+  - Deluge
     - `http://10.0.0.4:8112`
     password: deluge
-  `NZBGet`
+  - NZBGet
     - `http://10.0.0.4:6387`
     - username: nzbget
     - password: tegbzn6789
-  `Jackett`
+  - Jackett
     - `http://10.0.0.4:9117`
 
 - Automatic Downloader
