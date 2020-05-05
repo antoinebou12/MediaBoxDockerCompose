@@ -1,5 +1,5 @@
 # MediaBoxDockerCompose
-Sonarr | Radarr | Jackett | NZBGet | Deluge | Plex | Jellyfin | Ombi | Tautulli | Netdata | Dashmachine | FileBrowser | Lidarr
+Sonarr | Radarr | Jackett | NZBGet | Deluge | Plex | Jellyfin | Ombi | Tautulli | Netdata | Dashmachine | FileBrowser | Lidarr | Samba | Wireguard-as
 
 TV shows, movies, music download, sort, with the desired quality and subtitles ready to watch, in a beautiful media player. All automated.
 
@@ -13,6 +13,10 @@ inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
      - username: admin
      - password: admin
      - before docker-compose up create file in the ${ROOT}/config/filebrowser/database.db
+   - Samba
+      - `http://<your_ip>/Mount`
+   - Wireguard
+      - `http://<your_ip>;8000`
 
 - Torrenting tools
   - Deluge
@@ -23,6 +27,8 @@ inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
     - `http://<your_ip>:6387`
     - username: nzbget
     - password: tegbzn6789
+  - NBZHydra:
+     - `http://<your_ip>:5076`
   - Jackett
     - `http://<your_ip>:9117`
 
