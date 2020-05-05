@@ -4,9 +4,7 @@ services:
         container_name: deluge
         image: 'linuxserver/deluge:latest'
         restart: unless-stopped
-        ports:
-            - '8112:8112'
-            - '58846:58846'
+        network_mode: host
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -14,7 +12,7 @@ services:
         volumes:
             - '${ROOT}/downloads:/downloads'
             - '${ROOT}/config/deluge:/config'
-            
+
     jackett:
         container_name: jackett
         image: 'linuxserver/jackett:latest'
@@ -29,13 +27,12 @@ services:
             - '/etc/localtime:/etc/localtime:ro'
             - '${ROOT}/downloads/torrent-blackhole:/downloads'
             - '${ROOT}/config/jackett:/config'
-            
+
     nzbget:
         container_name: nzbget
         image: 'linuxserver/nzbget:latest'
         restart: unless-stopped
-        ports:
-            - '6789:6789'
+        network_mode: host
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -43,10 +40,10 @@ services:
         volumes:
             - '${ROOT}/downloads:/downloads'
             - '${ROOT}/config:/config'
-            
+
     sonarr:
         container_name: sonarr
-        image: 'linuxserver/sonarr:latest'
+        image: 'linuxserver/sonarr:preview'
         restart: unless-stopped
         ports:
             - '8989:8989'
@@ -57,9 +54,9 @@ services:
         volumes:
             - '/etc/localtime:/etc/localtime:ro'
             - '${ROOT}/config/sonarr:/config'
-            - '${ROOT}/complete/tv:/downloads/tv'
+            - '${ROOT}/complete/tv://tv'
             - '${ROOT}/downloads:/downloads'
-            
+
     radarr:
         container_name: radarr
         image: 'linuxserver/radarr:latest'
@@ -75,27 +72,26 @@ services:
             - '${ROOT}/config/radarr:/config'
             - '${ROOT}/complete/movies:/movies'
             - '${ROOT}/downloads:/downloads'
-            
+
     lidarr:
-        image: linuxserver/lidarr
+        image: linuxserver/lidarr:latest
         container_name: lidarr
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
             - 'TZ=${TZ}'
-            - UMASK_SET=022
         volumes:
             - '/etc/localtime:/etc/localtime:ro'
             - '${ROOT}/config/lidarr:/config'
             - '${ROOT}/complete/music:/music'
-            - '${ROOT}/downloads:/downloads'
+            - '${ROOT}/downloads/complete:/downloads'
         ports:
             - '8686:8686'
         restart: unless-stopped
-        
+
     bazarr:
         container_name: bazarr
-        image: linuxserver/bazarr
+        image: linuxserver/bazarr:latest
         restart: unless-stopped
         network_mode: host
         environment:
@@ -109,12 +105,14 @@ services:
             - '${ROOT}/complete/tv:/tv'
         ports:
             - '6767:6767'
-            
-    plex-server:
-        container_name: plex-server
+
+    plex:
+        container_name: plex
         image: 'plexinc/pms-docker:latest'
         restart: unless-stopped
         environment:
+            - 'PLEX_UID=${PUID}'
+            - 'PLEX_GID=${PGID}'
             - 'TZ=${TZ}'
             - 'PLEX_CLAIM=${PLEX_CLAIM}'
         ports:
@@ -129,12 +127,11 @@ services:
             - '32414:32414'
         volumes:
             - '${ROOT}/config/plex/db:/config'
-            - '${ROOT}/config/plex/logs:/config/Library/Application Support/Plex Media/Server/Logs'
             - '${ROOT}/config/plex/transcode:/transcode'
             - '${ROOT}/complete:/data'
-            
+
     tautulli:
-        image: linuxserver/tautulli
+        image: linuxserver/tautulli:latest
         container_name: tautulli
         environment:
             - 'PUID=${PUID}'
@@ -142,19 +139,19 @@ services:
             - 'TZ=${TZ}'
         volumes:
             - '${ROOT}/config/tautulli:/config'
-            - '${ROOT}/config/plex/logs:/logs'
         ports:
             - '8063:8181'
         restart: unless-stopped
-        
+
     jellyfin:
-        image: linuxserver/jellyfin
+        image: linuxserver/jellyfin:latest
         container_name: jellyfin
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
             - 'TZ=${TZ}'
         volumes:
+            - '/etc/localtime:/etc/localtime:ro'
             - '${ROOT}/config/jellyfin:/config'
             - '${ROOT}/complete/tv:/data/tvshows'
             - '${ROOT}/complete/movies:/data/movies'
@@ -164,9 +161,24 @@ services:
             - '8096:8096'
             - '8920:8920'
         restart: unless-stopped
-        
+
+    couchpotato:
+        image: linuxserver/couchpotato:latest
+        container_name: couchpotato
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/couchpotato/config:/config'
+            - '${ROOT}/downloads:/downloads'
+            - '${ROOT}/complete/movies:/movies'
+        ports:
+            - '5050:5050'
+        restart: unless-stopped
+
     ombi:
-        image: linuxserver/ombi
+        image: linuxserver/ombi:latest
         container_name: ombi
         environment:
             - 'PUID=${PUID}'
@@ -177,9 +189,9 @@ services:
         ports:
             - '3579:3579'
         restart: unless-stopped
-        
+
     netdata:
-        image: netdata/netdata
+        image: netdata/netdata:latest
         container_name: netdata
         environment:
             - 'PUID=${PUID}'
@@ -197,16 +209,57 @@ services:
             - '/proc:/host/proc:ro'
             - '/sys:/host/sys:ro'
         restart: unless-stopped
-        
+
     dashmachine:
       image: "rmountjoy/dashmachine:latest"
       container_name: dashmachine
       environment:
-        - PUID='${UDOCKER_USERID}'
-        - PGID='${UDOCKER_GROUPID}'
+        - PUID='${PUID}'
+        - PGID='${PGID}'
         - TZ='${TZ}'
       ports:
         - "5000:5000"
       volumes:
         - "${ROOT}/config/dashmachine:/dashmachine/dashmachine/user_data"
+      restart: unless-stopped
+
+    filebrowser:
+      image: filebrowser/filebrowser:latest
+      container_name: filebrowser
+      environment:
+        - PUID='${PUID}'
+        - PGID='${PGID}'
+        - TZ='${TZ}'
+      volumes:
+        - '${ROOT}/config/filebrowser/database.db:/database.db'
+        - '${ROOT}:/srv'
+      ports:
+        - '8999:80'
+
+    qbittorrent:
+      image: linuxserver/qbittorrent:latest
+      container_name: qbittorrent
+      network_mode: host
+      environment:
+        - PUID='${PUID}'
+        - PGID='${PGID}'
+        - TZ='${TZ}'
+        - WEBUI_PORT=8113
+      volumes:
+        - '${ROOT}/config/qbittorrent:/config'
+        - '${ROOT}/downloads:/downloads'
+      restart: unless-stopped
+
+    hydra2:
+      image: linuxserver/hydra2:latest
+      container_name: hydra2
+      environment:
+        - PUID='${PUID}'
+        - PGID='${PGID}'
+        - TZ='${TZ}'
+      volumes:
+        - '${ROOT}/config/hydra2:/config'
+        - '${ROOT}/downloads:/downloads'
+      ports:
+        - 5076:5076
       restart: unless-stopped

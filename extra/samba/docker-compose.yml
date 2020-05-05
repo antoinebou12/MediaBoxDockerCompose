@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  samba:
+    image: dperson/samba
+    environment:
+      - TZ= 'America/New_York'
+      - USERID=1000
+      - GROUPID=1000
+      - NMBD=True
+    ports:
+      - "137:137/udp"
+      - "138:138/udp"
+      - "139:139/tcp"
+      - "445:445/tcp"
+    restart: unless-stopped
+    volumes:
+      - /mnt/MediaBox:/mnt
+    command: '-s "Mount;/mnt;yes;no;yes;all"'
