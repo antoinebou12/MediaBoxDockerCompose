@@ -1,0 +1,59 @@
+loglevel: debug
+storage:
+  # Directory that VPN devices (WireGuard peers)
+  # should be saved under.
+  # If this value is empty then an InMemory storage
+  # backend will be used (not recommended).
+  # Defaults to "/data" inside the docker container
+  directory: /data
+wireguard:
+  # The network interface name for wireguard
+  # Optional
+  interfaceName: wg0
+  # The WireGuard PrivateKey
+  # You can generate this value using "$ wg genkey"
+  # If this value is empty then the server will use an in-memory
+  # generated key
+  privateKey: "MCtiQYKChjBt258YZ52/Xa2WaMq9JhfH/r2RJGi/qWY="
+  # ExternalAddress is the address that clients
+  # use to connect to the wireguard interface
+  # By default, this will be empty and the web ui
+  # will use the current page's origin i.e. window.location.origin
+  # The WireGuard ListenPort
+  # Optional
+  port: 51820
+vpn:
+  # of network isolation should be enfoced.
+  rules:
+    # AllowVPNLAN enables routing between VPN clients
+    # i.e. allows the VPN to work like a LAN.
+    # true by default
+    # Optional
+    allowVPNLAN: true
+    # AllowServerLAN enables routing to private IPv4
+    # address ranges. Enabling this will allow VPN clients
+    # to access networks on the server's LAN.
+    # true by default
+    # Optional
+    allowServerLAN: true
+    # AllowInternet enables routing of all traffic
+    # to the public internet.
+    # true by default
+    # Optional
+    allowInternet: true
+# Auth configures optional authentication backends
+# to controll access to the web ui.
+# Devices will be managed on a per-user basis if any
+# auth backends are configured.
+# If no authentication backends are configured then
+# the server will not require any authentication.
+# It's recommended to make use of basic authentication
+# or use an upstream HTTP proxy that enforces authentication
+# Optional
+auth:
+  # HTTP Basic Authentication
+  basic:
+    # Users is a list of htpasswd encoded username:password pairs
+    # supports BCrypt, Sha, Ssha, Md5
+    # You can create a user using "htpasswd -nB <username>"
+    users: [""]
