@@ -106,13 +106,8 @@ services:
         ports:
             - '6767:6767'
 
-<<<<<<< HEAD
     plex:
         container_name: plex
-=======
-    plex-server:
-        container_name: plex-server
->>>>>>> c1436aaa9d0ca018087124a742b6c20ad7f5f9e6
         image: 'plexinc/pms-docker:latest'
         restart: unless-stopped
         environment:
@@ -168,20 +163,12 @@ services:
         restart: unless-stopped
 
     couchpotato:
-<<<<<<< HEAD
         image: linuxserver/couchpotato:latest
-=======
-        image: linuxserver/couchpotato
->>>>>>> c1436aaa9d0ca018087124a742b6c20ad7f5f9e6
         container_name: couchpotato
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
             - 'TZ=${TZ}'
-<<<<<<< HEAD
-=======
-            - UMASK_SET=022
->>>>>>> c1436aaa9d0ca018087124a742b6c20ad7f5f9e6
         volumes:
             - '${ROOT}/config/couchpotato/config:/config'
             - '${ROOT}/downloads:/downloads'
@@ -237,11 +224,7 @@ services:
       restart: unless-stopped
 
     filebrowser:
-<<<<<<< HEAD
       image: filebrowser/filebrowser:latest
-=======
-      image: filebrowser/filebrowser
->>>>>>> c1436aaa9d0ca018087124a742b6c20ad7f5f9e6
       container_name: filebrowser
       environment:
         - PUID='${PUID}'
@@ -252,22 +235,6 @@ services:
         - '${ROOT}:/srv'
       ports:
         - '8999:80'
-<<<<<<< HEAD
-
-    qbittorrent:
-      image: linuxserver/qbittorrent:latest
-      container_name: qbittorrent
-      network_mode: host
-      environment:
-        - PUID='${PUID}'
-        - PGID='${PGID}'
-        - TZ='${TZ}'
-        - WEBUI_PORT=8113
-      volumes:
-        - '${ROOT}/config/qbittorrent:/config'
-        - '${ROOT}/downloads:/downloads'
-      restart: unless-stopped
-
     hydra2:
       image: linuxserver/hydra2:latest
       container_name: hydra2
@@ -281,5 +248,19 @@ services:
       ports:
         - 5076:5076
       restart: unless-stopped
-=======
->>>>>>> c1436aaa9d0ca018087124a742b6c20ad7f5f9e6
+      
+    tdarr:
+      image: haveagitgat/tdarr_aio
+      container_name: tdarr
+      environment:
+        - PUID='${PUID}'
+        - PGID='${PGID}'
+        - TZ='${TZ}'
+      volumes:
+          - '${ROOT}/complete:/home/Tdarr/Media'
+          - '${ROOT}/config/tdarr:/home/Tdarr/Documents/Tdarr'
+          - '${ROOT}/config/tdarr/db:/var/lib/mongodb'
+          - '/etc/localtime:/etc/localtime:ro'
+        ports:
+            - '8265:8265'
+        
