@@ -1,11 +1,4 @@
 loglevel: debug
-storage:
-  # Directory that VPN devices (WireGuard peers)
-  # should be saved under.
-  # If this value is empty then an InMemory storage
-  # backend will be used (not recommended).
-  # Defaults to "/data" inside the docker container
-  directory: /data
 wireguard:
   # The network interface name for wireguard
   # Optional
@@ -56,4 +49,4 @@ auth:
     # Users is a list of htpasswd encoded username:password pairs
     # supports BCrypt, Sha, Ssha, Md5
     # You can create a user using "htpasswd -nB <username>"
-    users: [""]
+    users: ["antoine:$2y$05$nzDH4lmNmmx6psHZ2AEcUeaf7ycu0CPE5k0jfdFb80.qWXajNnE9."]
