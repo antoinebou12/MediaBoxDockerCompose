@@ -10,3 +10,7 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - '/home/antoine/portainer:/data'
     restart: always
+    labels:
+      - "name=portainer"
+      - "description=portainer"
+      - "department=portainer"

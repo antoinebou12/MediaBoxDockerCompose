@@ -1,9 +1,14 @@
-version: '3.7'
+version: '3.8'
 services:
     deluge:
         container_name: deluge
         image: 'linuxserver/deluge:latest'
         restart: unless-stopped
+        ports:
+            - '8112:8112'
+            - '58846:58846'
+            - '58946:58946'
+            - '58946:58946/udp'
         network_mode: host
         environment:
             - 'PUID=${PUID}'
@@ -12,6 +17,10 @@ services:
         volumes:
             - '${ROOT}/downloads:/downloads'
             - '${ROOT}/config/deluge:/config'
+        labels:
+            - 'name="Deluge"'
+            - 'description="Deluge Torrent Client"'
+            - 'department="Media"'
 
     jackett:
         container_name: jackett
@@ -27,6 +36,10 @@ services:
             - '/etc/localtime:/etc/localtime:ro'
             - '${ROOT}/downloads/torrent-blackhole:/downloads'
             - '${ROOT}/config/jackett:/config'
+        labels:
+            - 'name="Jackett"'
+            - 'description="Jackett Torrent Indexer"'
+            - 'department="Media"'
 
     nzbget:
         container_name: nzbget
@@ -40,6 +53,10 @@ services:
         volumes:
             - '${ROOT}/downloads:/downloads'
             - '${ROOT}/config:/config'
+        labels:
+            - 'name="NZBGet"'
+            - 'description="NZBGet Usenet Downloader"'
+            - 'department="Media"'
 
     sonarr:
         container_name: sonarr
@@ -56,6 +73,10 @@ services:
             - '${ROOT}/config/sonarr:/config'
             - '${ROOT}/complete/tv://tv'
             - '${ROOT}/downloads:/downloads'
+        labels:
+            - 'name="Sonarr"'
+            - 'description="Sonarr TV Show Downloader"'
+            - 'department="Media"'
 
     radarr:
         container_name: radarr
@@ -72,10 +93,18 @@ services:
             - '${ROOT}/config/radarr:/config'
             - '${ROOT}/complete/movies:/movies'
             - '${ROOT}/downloads:/downloads'
+        labels:
+            - 'name="Radarr"'
+            - 'description="Radarr Movie Downloader"'
+            - 'department="Media"'
 
     lidarr:
         image: linuxserver/lidarr:latest
         container_name: lidarr
+        restart: unless-stopped
+        ports:
+            - '8686:8686'
+
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -85,15 +114,18 @@ services:
             - '${ROOT}/config/lidarr:/config'
             - '${ROOT}/complete/music:/music'
             - '${ROOT}/downloads/complete:/downloads'
-        ports:
-            - '8686:8686'
-        restart: unless-stopped
+        labels:
+            - 'name="Lidarr"'
+            - 'description="Lidarr Music Downloader"'
+            - 'department="Media"'
 
     bazarr:
         container_name: bazarr
         image: linuxserver/bazarr:latest
         restart: unless-stopped
         network_mode: host
+        ports:
+            - '6767:6767'
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -103,8 +135,10 @@ services:
             - '${ROOT}/config/bazarr:/config'
             - '${ROOT}/complete/movies:/movies'
             - '${ROOT}/complete/tv:/tv'
-        ports:
-            - '6767:6767'
+        labels:
+            - 'name="Bazarr"'
+            - 'description="Bazarr Subtitle Downloader"'
+            - 'department="Media"'
 
     plex:
         container_name: plex
@@ -129,10 +163,15 @@ services:
             - '${ROOT}/config/plex/db:/config'
             - '${ROOT}/config/plex/transcode:/transcode'
             - '${ROOT}/complete:/data'
+        labels:
+            - 'name="Plex"'
+            - 'description="Plex Media Server"'
+            - 'department="Media"'
 
     tautulli:
         image: linuxserver/tautulli:latest
         container_name: tautulli
+        restart: unless-stopped
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -141,11 +180,18 @@ services:
             - '${ROOT}/config/tautulli:/config'
         ports:
             - '8063:8181'
-        restart: unless-stopped
+        labels:
+            - 'name="Tautulli"'
+            - 'description="Tautulli Plex Monitoring"'
+            - 'department="Media"'
 
     jellyfin:
         image: linuxserver/jellyfin:latest
         container_name: jellyfin
+        restart: unless-stopped
+        ports:
+            - '8096:8096'
+            - '8920:8920'
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -157,14 +203,17 @@ services:
             - '${ROOT}/complete/movies:/data/movies'
             - '${ROOT}/complete/music:/data/music'
             - '/opt/vc/lib:/opt/vc/lib'
-        ports:
-            - '8096:8096'
-            - '8920:8920'
-        restart: unless-stopped
+        labels:
+            - 'name="Jellyfin"'
+            - 'description="Jellyfin Media Server"'
+            - 'department="Media"'
 
     couchpotato:
         image: linuxserver/couchpotato:latest
         container_name: couchpotato
+        restart: unless-stopped
+        ports:
+            - '5050:5050'
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -173,13 +222,15 @@ services:
             - '${ROOT}/config/couchpotato/config:/config'
             - '${ROOT}/downloads:/downloads'
             - '${ROOT}/complete/movies:/movies'
-        ports:
-            - '5050:5050'
-        restart: unless-stopped
+        labels:
+            - 'name="CouchPotato"'
+            - 'description="CouchPotato Movie Downloader"'
+            - 'department="Media"'
 
     ombi:
         image: linuxserver/ombi:latest
         container_name: ombi
+        restart: unless-stopped
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -188,11 +239,15 @@ services:
             - '${ROOT}/config/ombi/config:/config'
         ports:
             - '3579:3579'
-        restart: unless-stopped
+        labels:
+            - 'name="Ombi"'
+            - 'description="Ombi Media Request System"'
+            - 'department="Media"'
 
     netdata:
         image: netdata/netdata:latest
         container_name: netdata
+        restart: unless-stopped
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -208,59 +263,81 @@ services:
             - '/etc/group:/host/etc/group:ro'
             - '/proc:/host/proc:ro'
             - '/sys:/host/sys:ro'
-        restart: unless-stopped
+        labels:
+            - 'name="Netdata"'
+            - 'description="Netdata System Monitoring"'
+            - 'department="System"'
 
     dashmachine:
-      image: "rmountjoy/dashmachine:latest"
-      container_name: dashmachine
-      environment:
-        - PUID='${PUID}'
-        - PGID='${PGID}'
-        - TZ='${TZ}'
-      ports:
-        - "5000:5000"
-      volumes:
-        - "${ROOT}/config/dashmachine:/dashmachine/dashmachine/user_data"
-      restart: unless-stopped
+        image: "rmountjoy/dashmachine:latest"
+        container_name: dashmachine
+        restart: unless-stopped
+        environment:
+            - PUID='${PUID}'
+            - PGID='${PGID}'
+            - TZ='${TZ}'
+        ports:
+            - "5000:5000"
+        volumes:
+            - "${ROOT}/config/dashmachine:/dashmachine/dashmachine/user_data"
+        labels:
+            - 'name="Dashmachine"'
+            - 'description="Dashmachine Dashboard"'
+            - 'department="System"'
 
     filebrowser:
-      image: filebrowser/filebrowser:latest
-      container_name: filebrowser
-      environment:
-        - PUID='${PUID}'
-        - PGID='${PGID}'
-        - TZ='${TZ}'
-      volumes:
-        - '${ROOT}/config/filebrowser/database.db:/database.db'
-        - '${ROOT}:/srv'
-      ports:
-        - '8999:80'
+        image: filebrowser/filebrowser:latest
+        container_name: filebrowser
+        restart: unless-stopped
+        environment:
+            - PUID='${PUID}'
+            - PGID='${PGID}'
+            - TZ='${TZ}'
+        volumes:
+            - '${ROOT}/config/filebrowser/database.db:/database.db'
+            - '${ROOT}:/srv'
+        ports:
+            - '8999:80'
+        labels:
+            - 'name="Filebrowser"'
+            - 'description="Filebrowser File Manager"'
+            - 'department="System"'
+
     hydra2:
-      image: linuxserver/hydra2:latest
-      container_name: hydra2
-      environment:
-        - PUID='${PUID}'
-        - PGID='${PGID}'
-        - TZ='${TZ}'
-      volumes:
-        - '${ROOT}/config/hydra2:/config'
-        - '${ROOT}/downloads:/downloads'
-      ports:
-        - 5076:5076
-      restart: unless-stopped
-      
+        image: linuxserver/hydra2:latest
+        container_name: hydra2
+        restart: unless-stopped
+        environment:
+            - PUID='${PUID}'
+            - PGID='${PGID}'
+            - TZ='${TZ}'
+        volumes:
+            - '${ROOT}/config/hydra2:/config'
+            - '${ROOT}/downloads:/downloads'
+        ports:
+            - 5076:5076
+
+        labels:
+            - 'name="Hydra2"'
+            - 'description="Hydra2 NZB Indexer"'
+            - 'department="Media"'
+
     tdarr:
-      image: haveagitgat/tdarr_aio
-      container_name: tdarr
-      environment:
-        - PUID='${PUID}'
-        - PGID='${PGID}'
-        - TZ='${TZ}'
-      volumes:
-          - '${ROOT}/complete:/home/Tdarr/Media'
-          - '${ROOT}/config/tdarr:/home/Tdarr/Documents/Tdarr'
-          - '${ROOT}/config/tdarr/db:/var/lib/mongodb'
-          - '/etc/localtime:/etc/localtime:ro'
+        image: haveagitgat/tdarr_aio
+        container_name: tdarr
+        restart: unless-stopped
         ports:
             - '8265:8265'
-        
+        environment:
+            - PUID='${PUID}'
+            - PGID='${PGID}'
+            - TZ='${TZ}'
+        volumes:
+            - '${ROOT}/complete:/home/Tdarr/Media'
+            - '${ROOT}/config/tdarr:/home/Tdarr/Documents/Tdarr'
+            - '${ROOT}/config/tdarr/db:/var/lib/mongodb'
+            - '/etc/localtime:/etc/localtime:ro'
+        labels:
+            - 'name="Tdarr"'
+            - 'description="Tdarr Media Converter"'
+            - 'department="Media"'

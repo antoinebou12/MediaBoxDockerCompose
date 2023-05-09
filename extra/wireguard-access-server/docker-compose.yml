@@ -13,3 +13,8 @@ services:
       - "51820:51820/udp"
     devices:
       - "/dev/net/tun:/dev/net/tun"
+    restart: unless-stopped
+    labels:
+      - "name=wg-access-server"
+      - "description=WireGuard Access Server"
+      - "department=IT"

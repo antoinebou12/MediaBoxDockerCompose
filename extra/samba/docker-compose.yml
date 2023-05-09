@@ -15,4 +15,8 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/MediaBox:/mnt
+    labels:
+      - "name=samba"
+      - "description=File server"
+      - "department=IT"
     command: '-s "Mount;/mnt;yes;no;yes;all"'
