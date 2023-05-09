@@ -5,9 +5,6 @@ TV shows, movies, music download, sort, with the desired quality and subtitles r
 
 inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
 
-MediaBoxDockerCompose is a Docker Compose configuration for setting up a fully automated media server that can download, sort, and play TV shows, movies, and music with desired quality and subtitles. This configuration includes popular tools and services such as Sonarr, Radarr, Jackett, NZBGet, Deluge, Plex, Jellyfin, Ombi, Tautulli, Netdata, Dashmachine, FileBrowser, Lidarr, Samba, and Wireguard.
-Sure, here's a sample template for a better README file:
-
 ## Table of Contents
 
 - [Installation](#installation)
