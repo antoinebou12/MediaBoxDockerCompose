@@ -67,6 +67,23 @@ docker-compose up -d
 
 - Dashmachine: http://<your_ip>:5000 (use the dashmachine.config.ini in [Setting])
 
+## Backup
+
+1. For each service (Sonarr, Radarr, Lidarr, NZBHydra), access the web interface.
+2. Navigate to `System > Backup`.
+3. Click on `Backup` to manually trigger a backup.
+
+Remember, the backup files should be stored safely, preferably in a different location than your main system.
+
+## Restore
+
+1. Access the service's web interface.
+2. Navigate to `System > Backup`.
+3. Use the `Select Backup` option and upload your backup file.
+
+For restoring, ensure that the service is stopped and then start it again after the restoration process. 
+For Bazarr and Jackett, which do not have built-in backup and restore functionality, you'll need to manually copy the application directory for backup and replace it for restoration.
+
 ## Contributing
 
 Pull requests and suggestions are welcome. For major changes, please open an issue first to discuss what you would like to change.
