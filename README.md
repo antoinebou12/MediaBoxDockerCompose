@@ -4,21 +4,29 @@
 
 ## Docker Containers
 
-- **Sonarr**: ![Sonarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/sonarr) ![Sonarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/sonarr)
-- **Radarr**: ![Radarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/radarr) ![Radarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/radarr)
+- **Deluge**: ![Deluge Docker Image Version](https://img.shields.io/docker/v/linuxserver/deluge) ![Deluge Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/deluge)
 - **Jackett**: ![Jackett Docker Image Version](https://img.shields.io/docker/v/linuxserver/jackett) ![Jackett Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/jackett)
 - **NZBGet**: ![NZBGet Docker Image Version](https://img.shields.io/docker/v/linuxserver/nzbget) ![NZBGet Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/nzbget)
-- **Deluge**: ![Deluge Docker Image Version](https://img.shields.io/docker/v/linuxserver/deluge) ![Deluge Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/deluge)
-- **Plex**: ![Plex Docker Image Version](https://img.shields.io/docker/v/linuxserver/plex) ![Plex Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/plex)
-- **Jellyfin**: ![Jellyfin Docker Image Version](https://img.shields.io/docker/v/linuxserver/jellyfin) ![Jellyfin Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/jellyfin)
-- **Ombi**: ![Ombi Docker Image Version](https://img.shields.io/docker/v/linuxserver/ombi) ![Ombi Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/ombi)
+- **Sonarr**: ![Sonarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/sonarr) ![Sonarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/sonarr)
+- **Radarr**: ![Radarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/radarr) ![Radarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/radarr)
+- **Lidarr**: ![Lidarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/lidarr) ![Lidarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/lidarr)
+- **Bazarr**: ![Bazarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/bazarr) ![Bazarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/bazarr)
+- **Plex**: ![Plex Docker Image Version](https://img.shields.io/docker/v/plexinc/pms-docker) ![Plex Docker Pulls](https://img.shields.io/docker/pulls/plexinc/pms-docker)
 - **Tautulli**: ![Tautulli Docker Image Version](https://img.shields.io/docker/v/linuxserver/tautulli) ![Tautulli Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tautulli)
+- **Jellyfin**: ![Jellyfin Docker Image Version](https://img.shields.io/docker/v/linuxserver/jellyfin) ![Jellyfin Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/jellyfin)
+- **CouchPotato**: ![CouchPotato Docker Image Version](https://img.shields.io/docker/v/linuxserver/couchpotato) ![CouchPotato Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/couchpotato)
+- **Ombi**: ![Ombi Docker Image Version](https://img.shields.io/docker/v/linuxserver/ombi) ![Ombi Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/ombi)
 - **Netdata**: ![Netdata Docker Image Version](https://img.shields.io/docker/v/netdata/netdata) ![Netdata Docker Pulls](https://img.shields.io/docker/pulls/netdata/netdata)
 - **Dashmachine**: ![Dashmachine Docker Image Version](https://img.shields.io/docker/v/rmountjoy/dashmachine) ![Dashmachine Docker Pulls](https://img.shields.io/docker/pulls/rmountjoy/dashmachine)
-- **FileBrowser**: ![FileBrowser Docker Image Version](https://img.shields.io/docker/v/filebrowser/filebrowser) ![FileBrowser Docker Pulls](https://img.shields.io/docker/pulls/filebrowser/filebrowser)
-- **Lidarr**: ![Lidarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/lidarr) ![Lidarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/lidarr)
-- **Samba**: ![Samba Docker Image Version](https://img.shields.io/docker/v/dperson/samba) ![Samba Docker Pulls](https://img.shields.io/docker/pulls/dperson/samba)
-- **Wireguard-as**: ![Wireguard-as Docker Image Version](https://img.shields.io/docker/v/place1/wg-access-server) ![Wireguard-as Docker Pulls](https://img.shields.io/docker/pulls/place1/wg-access-server)
+- **Filebrowser**: ![Filebrowser Docker Image Version](https://img.shields.io/docker/v/filebrowser/filebrowser) ![Filebrowser Docker Pulls](https://img.shields.io/docker/pulls/filebrowser/filebrowser)
+- **Hydra2**: ![Hydra2 Docker Image Version](https://img.shields.io/docker/v/linuxserver/hydra2) ![Hydra2 Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/hydra2)
+- **Tdarr**: ![Tdarr Docker Image Version](https://img.shields.io/docker/v/haveagitgat/tdarr_aio) ![Tdarr Docker Pulls](https://img.shields.io/docker/pulls/haveagitgat/tdarr_aio)
+- **Prowlarr**: ![Prowlarr Docker Image Version](https://img.shields.io/docker/v/hotio/prowlarr) ![Prowlarr Docker Pulls](https://img.shields.io/docker/pulls/hotio/prowlarr)
+- **Readarr**: ![Readarr Docker Image Version](https://img.shields.io/docker/v/hotio/readarr) ![Readarr Docker Pulls](https://img.shields.io/docker/pulls/hotio/readarr)
+- **Whisparr**: ![Whisparr Docker Image Version](https://img.shields.io/docker/v/hotio/whisparr) ![Whisparr Docker Pulls](https://img.shields.io/docker/pulls/hotio/whisparr)
+- **Stash**: ![Stash Docker Image Version](https://img.shields.io/docker/v/hotio/stash) ![Stash Docker Pulls](https://img.shields.io/docker/pulls/hotio/stash)
+- **Jellyseerr**: ![Jellyseerr Docker Image Version](https://img.shields.io/docker/v/hotio/jellyseerr) ![Jellyseerr Docker Pulls](https://img.shields.io/docker/pulls/hotio/jellyseerr)
+
 
 
 Sonarr | Radarr | Jackett | NZBGet | Deluge | Plex | Jellyfin | Ombi | Tautulli | Netdata | Dashmachine | FileBrowser | Lidarr | Samba | Wireguard-as 
