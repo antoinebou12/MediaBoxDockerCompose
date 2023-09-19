@@ -13,12 +13,12 @@
 - **Jellyfin**: ![Jellyfin Docker Image Version](https://img.shields.io/docker/v/linuxserver/jellyfin) ![Jellyfin Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/jellyfin)
 - **Ombi**: ![Ombi Docker Image Version](https://img.shields.io/docker/v/linuxserver/ombi) ![Ombi Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/ombi)
 - **Tautulli**: ![Tautulli Docker Image Version](https://img.shields.io/docker/v/linuxserver/tautulli) ![Tautulli Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tautulli)
-- **Netdata**: ![Netdata Docker Image Version](https://img.shields.io/docker/v/linuxserver/netdata) ![Netdata Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/netdata)
-- **Dashmachine**: ![Dashmachine Docker Image Version](https://img.shields.io/docker/v/linuxserver/dashmachine) ![Dashmachine Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/dashmachine)
-- **FileBrowser**: ![FileBrowser Docker Image Version](https://img.shields.io/docker/v/linuxserver/filebrowser) ![FileBrowser Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/filebrowser)
+- **Netdata**: ![Netdata Docker Image Version](https://img.shields.io/docker/v/netdata/netdata) ![Netdata Docker Pulls](https://img.shields.io/docker/pulls/netdata/netdata)
+- **Dashmachine**: ![Dashmachine Docker Image Version](https://img.shields.io/docker/v/rmountjoy/dashmachine) ![Dashmachine Docker Pulls](https://img.shields.io/docker/pulls/rmountjoy/dashmachine)
+- **FileBrowser**: ![FileBrowser Docker Image Version](https://img.shields.io/docker/v/filebrowser/filebrowser) ![FileBrowser Docker Pulls](https://img.shields.io/docker/pulls/filebrowser/filebrowser)
 - **Lidarr**: ![Lidarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/lidarr) ![Lidarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/lidarr)
-- **Samba**: ![Samba Docker Image Version](https://img.shields.io/docker/v/linuxserver/samba) ![Samba Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/samba)
-- **Wireguard-as**: ![Wireguard-as Docker Image Version](https://img.shields.io/docker/v/linuxserver/wireguard-as) ![Wireguard-as Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/wireguard-as)
+- **Samba**: ![Samba Docker Image Version](https://img.shields.io/docker/v/dperson/samba) ![Samba Docker Pulls](https://img.shields.io/docker/pulls/dperson/samba)
+- **Wireguard-as**: ![Wireguard-as Docker Image Version](https://img.shields.io/docker/v/place1/wg-access-server) ![Wireguard-as Docker Pulls](https://img.shields.io/docker/pulls/place1/wg-access-server)
 
 
 Sonarr | Radarr | Jackett | NZBGet | Deluge | Plex | Jellyfin | Ombi | Tautulli | Netdata | Dashmachine | FileBrowser | Lidarr | Samba | Wireguard-as 
