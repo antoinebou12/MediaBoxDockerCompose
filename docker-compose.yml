@@ -4,11 +4,6 @@ services:
         container_name: deluge
         image: 'linuxserver/deluge:latest'
         restart: unless-stopped
-        ports:
-            - '8112:8112'
-            - '58846:58846'
-            - '58946:58946'
-            - '58946:58946/udp'
         network_mode: host
         environment:
             - 'PUID=${PUID}'
@@ -124,8 +119,6 @@ services:
         image: linuxserver/bazarr:latest
         restart: unless-stopped
         network_mode: host
-        ports:
-            - '6767:6767'
         environment:
             - 'PUID=${PUID}'
             - 'PGID=${PGID}'
@@ -340,4 +333,93 @@ services:
         labels:
             - 'name="Tdarr"'
             - 'description="Tdarr Media Converter"'
+            - 'department="Media"'
+
+  prowlarr:
+        container_name: prowlarr
+        image: 'hotio/prowlarr'
+        restart: unless-stopped
+        ports:
+            - '9696:9696'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/prowlarr:/config'
+            - '${ROOT}/downloads:/downloads'
+        labels:
+            - 'name="Prowlarr"'
+            - 'description="Prowlarr Unified Indexer"'
+            - 'department="Media"'
+
+    readarr:
+        container_name: readarr
+        image: 'hotio/readarr'
+        restart: unless-stopped
+        ports:
+            - '8787:8787'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/readarr:/config'
+            - '${ROOT}/complete/books:/books'
+        labels:
+            - 'name="Readarr"'
+            - 'description="Readarr Book Management"'
+            - 'department="Media"'
+    whisparr:
+        container_name: whisparr
+        image: 'ghcr.io/hotio/whisparr'
+        restart: unless-stopped
+        ports:
+            - '6969:6969'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/whisparr:/config'
+            - '${ROOT}/downloads:/downloads'
+        labels:
+            - 'name="Whisparr"'
+            - 'description="Whisparr Media Management"'
+            - 'department="Media"'
+
+    stash:
+        container_name: stash
+        image: 'hotio/stash'
+        restart: unless-stopped
+        ports:
+            - '9999:9999'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/stash:/config'
+            - '${ROOT}/complete/adult:/adult'
+        labels:
+            - 'name="Stash"'
+            - 'description="Stash Adult Media Organizer"'
+            - 'department="Media"'
+
+    jellyseerr:
+        container_name: jellyseerr
+        image: 'hotio/jellyseerr'
+        restart: unless-stopped
+        ports:
+            - '8097:8097'
+        environment:
+            - 'PUID=${PUID}'
+            - 'PGID=${PGID}'
+            - 'TZ=${TZ}'
+        volumes:
+            - '${ROOT}/config/jellyseerr:/config'
+            - '${ROOT}/complete:/complete'
+        labels:
+            - 'name="Jellyseerr"'
+            - 'description="Jellyseerr Media Server"'
             - 'department="Media"'
