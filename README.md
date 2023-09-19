@@ -1,9 +1,18 @@
 # MediaBoxDockerCompose
-Sonarr | Radarr | Jackett | NZBGet | Deluge | Plex | Jellyfin | Ombi | Tautulli | Netdata | Dashmachine | FileBrowser | Lidarr | Samba | Wireguard-as
 
-TV shows, movies, music download, sort, with the desired quality and subtitles ready to watch, in a beautiful media player. All automated.
+![Docker Image Version](https://img.shields.io/docker/v/linuxserver/sonarr)
+![GitHub license](https://img.shields.io/github/license/your-username/your-repo)
+![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/sonarr)
+![Last Commit](https://img.shields.io/github/last-commit/your-username/your-repo)
 
-inspired by https://github.com/sebgl/htpc-download-box#setup-sonarr
+Sonarr | Radarr | Jackett | NZBGet | Deluge | Plex | Jellyfin | Ombi | Tautulli | Netdata | Dashmachine | FileBrowser | Lidarr | Samba | Wireguard-as 
+
+**TV shows, movies, music download, sort, with the desired quality and subtitles, all ready to watch in a beautiful media player. All automated.**
+
+Inspired by:
+- [HTPC Download Box](https://github.com/sebgl/htpc-download-box#setup-sonarr)
+- [Servarr Wiki](https://wiki.servarr.com)
+- [Hotio Containers](https://hotio.dev/containers/autoscan/)
 
 ## Table of Contents
 
@@ -47,6 +56,7 @@ docker-compose up -d
 - NZBGet: http://<your_ip>:6387 (username: nzbget, password: tegbzn6789)
 - NBZHydra: http://<your_ip>:5076
 - Jackett: http://<your_ip>:9117
+- **Prowlarr**: Unified Indexer - `http://<your_ip>:9696`
 
 ## Automatic Downloaders
 
@@ -54,6 +64,7 @@ docker-compose up -d
 - Radarr: http://<your_ip>:7878 (movies)
 - Lidarr: http://<your_ip>:8686 (music)
 - Bazarr: http://<your_ip>:6767 (subtitles)
+- **Whisparr**: Media Management - `http://<your_ip>:6969`
 
 ## Media and Player Services
 
@@ -67,6 +78,9 @@ docker-compose up -d
 
 - Dashmachine: http://<your_ip>:5000 (use the dashmachine.config.ini in [Setting])
 
+### Adult Media Management
+- **Stash**: Adult Media Organizer - `http://<your_ip>:9999`
+
 ## Backup
 
 1. For each service (Sonarr, Radarr, Lidarr, NZBHydra), access the web interface.
@@ -74,6 +88,9 @@ docker-compose up -d
 3. Click on `Backup` to manually trigger a backup.
 
 Remember, the backup files should be stored safely, preferably in a different location than your main system.
+
+For services like **Stash**, **Bazarr**, and **Jackett**, you'll need to manually copy the application directory for backup and replace it for restoration.
+
 
 ## Restore
 
