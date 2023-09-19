@@ -1,9 +1,25 @@
 # MediaBoxDockerCompose
+![GitHub license](https://img.shields.io/github/license/antoinebou12/MediaBoxDockerCompose)
+![Last Commit](https://img.shields.io/github/last-commit/antoinebou12/MediaBoxDockerCompose)
 
-![Docker Image Version](https://img.shields.io/docker/v/linuxserver/sonarr)
-![GitHub license](https://img.shields.io/github/license/your-username/your-repo)
-![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/sonarr)
-![Last Commit](https://img.shields.io/github/last-commit/your-username/your-repo)
+## Docker Containers
+
+- **Sonarr**: ![Sonarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/sonarr) ![Sonarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/sonarr)
+- **Radarr**: ![Radarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/radarr) ![Radarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/radarr)
+- **Jackett**: ![Jackett Docker Image Version](https://img.shields.io/docker/v/linuxserver/jackett) ![Jackett Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/jackett)
+- **NZBGet**: ![NZBGet Docker Image Version](https://img.shields.io/docker/v/linuxserver/nzbget) ![NZBGet Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/nzbget)
+- **Deluge**: ![Deluge Docker Image Version](https://img.shields.io/docker/v/linuxserver/deluge) ![Deluge Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/deluge)
+- **Plex**: ![Plex Docker Image Version](https://img.shields.io/docker/v/linuxserver/plex) ![Plex Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/plex)
+- **Jellyfin**: ![Jellyfin Docker Image Version](https://img.shields.io/docker/v/linuxserver/jellyfin) ![Jellyfin Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/jellyfin)
+- **Ombi**: ![Ombi Docker Image Version](https://img.shields.io/docker/v/linuxserver/ombi) ![Ombi Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/ombi)
+- **Tautulli**: ![Tautulli Docker Image Version](https://img.shields.io/docker/v/linuxserver/tautulli) ![Tautulli Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/tautulli)
+- **Netdata**: ![Netdata Docker Image Version](https://img.shields.io/docker/v/linuxserver/netdata) ![Netdata Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/netdata)
+- **Dashmachine**: ![Dashmachine Docker Image Version](https://img.shields.io/docker/v/linuxserver/dashmachine) ![Dashmachine Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/dashmachine)
+- **FileBrowser**: ![FileBrowser Docker Image Version](https://img.shields.io/docker/v/linuxserver/filebrowser) ![FileBrowser Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/filebrowser)
+- **Lidarr**: ![Lidarr Docker Image Version](https://img.shields.io/docker/v/linuxserver/lidarr) ![Lidarr Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/lidarr)
+- **Samba**: ![Samba Docker Image Version](https://img.shields.io/docker/v/linuxserver/samba) ![Samba Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/samba)
+- **Wireguard-as**: ![Wireguard-as Docker Image Version](https://img.shields.io/docker/v/linuxserver/wireguard-as) ![Wireguard-as Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/wireguard-as)
+
 
 Sonarr | Radarr | Jackett | NZBGet | Deluge | Plex | Jellyfin | Ombi | Tautulli | Netdata | Dashmachine | FileBrowser | Lidarr | Samba | Wireguard-as 
 
