@@ -335,7 +335,7 @@ services:
             - 'description="Tdarr Media Converter"'
             - 'department="Media"'
 
-  prowlarr:
+    prowlarr:
         container_name: prowlarr
         image: 'hotio/prowlarr'
         restart: unless-stopped
