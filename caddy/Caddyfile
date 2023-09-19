@@ -1,0 +1,64 @@
+{
+    email {$CADDY_EMAIL}
+}
+
+# Common Snippets
+(log_site) {
+    log {
+        output file {$LOG_PATH}/{args.0}.log {
+            roll_size 10mb
+            roll_keep 5
+            roll_keep_for 168h
+        }
+    }
+}
+
+(handle_errors) {
+    handle_errors {
+        respond "{http.error.status_code} Something went wrong"
+    }
+}
+
+(reverse_proxy_snippet) {
+    reverse_proxy {args.0}:{args.1}
+}
+
+(cache) {
+    cache {
+        match_path /assets/*
+        status_header Cache-Status
+    }
+}
+
+(request_throttle) {
+    limit rate 10r/m burst 5
+}
+
+(ip_whitelist) {
+    allow 192.168.1.1 192.168.1.2
+    deny 0.0.0.0/0
+}
+
+(basic_auth) {
+    basicauth {
+        {$BASIC_USER} {$BASIC_PASS}
+    }
+}
+
+(compress_response) {
+    encode gzip zstd
+}
+
+# Service Definitions
+deluge.{$DOMAIN} {
+    import log_site deluge
+    import handle_errors
+    import reverse_proxy_snippet localhost 8112
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Add more services in a similar manner
