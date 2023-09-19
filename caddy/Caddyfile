@@ -61,4 +61,254 @@ deluge.{$DOMAIN} {
     import compress_response
 }
 
-# Add more services in a similar manner
+# Jackett
+jackett.{$DOMAIN} {
+    import log_site jackett
+    import handle_errors
+    import reverse_proxy_snippet localhost 9117
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# NZBGet
+nzbget.{$DOMAIN} {
+    import log_site nzbget
+    import handle_errors
+    import reverse_proxy_snippet localhost 6789
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Sonarr
+sonarr.{$DOMAIN} {
+    import log_site sonarr
+    import handle_errors
+    import reverse_proxy_snippet localhost 8989
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Plex
+plex.{$DOMAIN} {
+    import log_site plex
+    import handle_errors
+    import reverse_proxy_snippet localhost 32400
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Tautulli
+tautulli.{$DOMAIN} {
+    import log_site tautulli
+    import handle_errors
+    import reverse_proxy_snippet localhost 8181
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Jellyfin
+jellyfin.{$DOMAIN} {
+    import log_site jellyfin
+    import handle_errors
+    import reverse_proxy_snippet localhost 8096
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Ombi
+ombi.{$DOMAIN} {
+    import log_site ombi
+    import handle_errors
+    import reverse_proxy_snippet localhost 3579
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# FileBrowser
+filebrowser.{$DOMAIN} {
+    import log_site filebrowser
+    import handle_errors
+    import reverse_proxy_snippet localhost 8999
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Dashmachine
+dashmachine.{$DOMAIN} {
+    import log_site dashmachine
+    import handle_errors
+    import reverse_proxy_snippet localhost 5000
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Netdata
+netdata.{$DOMAIN} {
+    import log_site netdata
+    import handle_errors
+    import reverse_proxy_snippet localhost 19999
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# CouchPotato
+couchpotato.{$DOMAIN} {
+    import log_site couchpotato
+    import handle_errors
+    import reverse_proxy_snippet localhost 5050
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Hydra2
+hydra2.{$DOMAIN} {
+    import log_site hydra2
+    import handle_errors
+    import reverse_proxy_snippet localhost 5076
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Tdarr
+tdarr.{$DOMAIN} {
+    import log_site tdarr
+    import handle_errors
+    import reverse_proxy_snippet localhost 8265
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Prowlarr
+prowlarr.{$DOMAIN} {
+    import log_site prowlarr
+    import handle_errors
+    import reverse_proxy_snippet localhost 9696
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Readarr
+readarr.{$DOMAIN} {
+    import log_site readarr
+    import handle_errors
+    import reverse_proxy_snippet localhost 8787
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Whisparr
+whisparr.{$DOMAIN} {
+    import log_site whisparr
+    import handle_errors
+    import reverse_proxy_snippet localhost 6969
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Stash
+stash.{$DOMAIN} {
+    import log_site stash
+    import handle_errors
+    import reverse_proxy_snippet localhost 9999
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Jellyseerr
+jellyseerr.{$DOMAIN} {
+    import log_site jellyseerr
+    import handle_errors
+    import reverse_proxy_snippet localhost 8097
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Radarr
+radarr.{$DOMAIN} {
+    import log_site radarr
+    import handle_errors
+    import reverse_proxy_snippet localhost 7878
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Lidarr
+lidarr.{$DOMAIN} {
+    import log_site lidarr
+    import handle_errors
+    import reverse_proxy_snippet localhost 8686
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
+
+# Bazarr
+bazarr.{$DOMAIN} {
+    import log_site bazarr
+    import handle_errors
+    import reverse_proxy_snippet localhost 6767
+    import cache
+    import request_throttle
+    import ip_whitelist
+    import basic_auth
+    import compress_response
+}
